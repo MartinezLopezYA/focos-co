@@ -7,10 +7,12 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Navbar() {
 
     const inputRef = React.useRef<HTMLInputElement>(null);
+    const [isShowed, setIsShowed] = React.useState(true);
     const [isOpen, setIsOpen] = React.useState(false);
 
     const handleExpand = () => {
         inputRef.current?.focus();
+        setIsShowed((prev) => !prev);
     }
 
     const toggleMenu = () => {
@@ -32,24 +34,20 @@ export default function Navbar() {
         };
     }, [isOpen]);
 
-    const menuVariants = {
-        hidden: { x: '100%' },
-        visible: { x: 0, transition: { type: 'tween', duration: 0.3 } },
-        exit: { x: '100%', transition: { type: 'tween', duration: 0.3 } },
-    };
-
     return (
-        <nav className="px-4 py-2">
+        <nav className="px-4 py-2 h-72px">
             <div className="container mx-auto flex justify-between items-center relative">
-                <Link href="/" className="text-[var(--foreground)] text-lg font-bold">
-                    <span className="sr-only">Your Company</span>
-                    <Image width={800} height={1} className="bg-[var(--primary)] h-14 w-auto" src="/media/images/Logo.png" alt="Focosco main logo" priority/>
-                </Link>
-                <div className="hidden md:flex space-x-8">
-                    <Link href="/" className="text-gray-700 hover:text-[var(--accent)] transition-colors">Inicio</Link>
-                    <Link href="/about" className="text-gray-700 hover:text-[var(--accent)] transition-colors">Acerca de</Link>
-                    <Link href="/services" className="text-gray-700 hover:text-[var(--accent)] transition-colors">Servicios</Link>
-                    <Link href="/contact" className="text-gray-700 hover:text-[var(--accent)] transition-colors">Contacto</Link>
+                {isShowed && (
+                    <Link href="/" className="rounded-full">
+                        <span className="sr-only">Your Company</span>
+                        <Image width={800} height={1} className="rounded-full bg-[var(--primary)] h-14 w-auto" src="/media/images/Logo.png" alt="Focosco main logo" priority/>
+                    </Link>
+                )}
+                <div className="hidden md:flex space-x-2">
+                    <Link href="/" className="text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4">Inicio</Link>
+                    <Link href="/about" className="text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4"> Acerca de</Link>
+                    <Link href="/services" className="text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4">Servicios</Link>
+                    <Link href="/contact" className="text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4 ">Contacto</Link>
                 </div>
                 <div className="space-x-4 flex items-center">
                     <div className="relative flex items-center group">
@@ -59,7 +57,7 @@ export default function Navbar() {
                                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
                             </svg>
                         </button>
-                        <input ref={inputRef} type="text" placeholder="Buscar en la página..." className="pl-12 py-2 bg-white transition-all duration-800 w-10 hover:border border-gray-400 focus:w-72 group-hover:w-72 focus:outline-none focus:ring-1 focus:ring-[var(--accent)] focus:shadow-lg text-gray-700 cursor-pointer focus:cursor-text focus:pr-2" onFocus={e => e.currentTarget.select()}/>
+                        <input ref={inputRef} type="text" placeholder="Buscar en la página..." className="pl-12 py-2 bg-white transition-all duration-800 w-10 hover:border border-gray-400 focus:w-72 group-hover:w-72 focus:outline-none focus:ring-1 focus:ring-[var(--accent)] focus:shadow-lg text-gray-700 cursor-pointer focus:cursor-text focus:pr-2 rounded-full" onFocus={e => e.currentTarget.select()} onBlur={() => setIsShowed(true)}/>
                     </div>
                     <div className="space-x-4 flex items-center">
                         {/* <button aria-label="Cambiar tema" className="p-2 rounded-full hover:bg-gray-100 transition">
@@ -90,7 +88,13 @@ export default function Navbar() {
                         onClick={toggleMenu}
                       >
                         <motion.div
-                          variants={menuVariants}
+                          variants={
+                            {
+                                hidden: { x: '100%' },
+                                visible: { x: 0, transition: { type: 'tween', duration: 0.3 } },
+                                exit: { x: '100%', transition: { type: 'tween', duration: 0.3 } },
+                            }
+                          }
                           initial="hidden"
                           animate="visible"
                           exit="exit"
