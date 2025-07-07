@@ -8,6 +8,7 @@
   --primaryhover: #23273a;
   --accent: #FBB03B;
   --accenthover: #ffbe55;
+  --accenttransparent: rgba(251, 176, 59, 0.375);
   --secondary: #F48E20;
   --secondaryhover: #ff9c3a;
 }
@@ -21,6 +22,7 @@
   --primaryhover: #23273a;
   --accent: #FBB03B;
   --accenthover: #ffbe55;
+  --accenttransparent: rgba(251, 177, 59, 0.375);
   --secondary: #F48E20;
   --secondaryhover: #ff9c3a;
 }
@@ -47,5 +49,28 @@ body {
 }
 
 .section-hero {
-  height: calc(100dvh - 72px) !important;
+  height: 100dvh !important;
+}
+
+.overflow-section {
+  overflow: hidden;
+}
+
+.overflow-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-section::-webkit-scrollbar-thumb {
+  margin-right: 10px !important;
+  background-color: var(--primary);
+  border-radius: 4px;
+}
+
+.overflow-section::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primaryhover);
+}
+
+::selection {
+  background: var(--accenttransparent);
+  color: var(--primary);
 }

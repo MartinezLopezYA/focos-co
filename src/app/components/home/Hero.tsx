@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import Link from "next/link";
 
 export default function Hero() {
@@ -10,20 +10,20 @@ export default function Hero() {
         visible: { 
             opacity: 1, 
             y: 0, 
-            transition: { duration: 0.8, ease: "easeInOut" }
+            transition: { duration: 0.8, ease: easeInOut }
         }
     };
 
     const buttonVariants = {
         hidden: { opacity: 0, scale: 0.8 },
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeInOut", delay: 0.6 } },
+        visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: easeInOut, delay: 0.6 } },
     };
 
     return (
-        <section className="relative w-full flex items-center justify-center text-center overflow-hidden">
-            <video className="absolute w-full object-cover z-0 blur-sm" src="/media/films/test.mkv" autoPlay loop muted playsInline aria-label="Video de fondo mostrando producción multimedia">
+        <section className="relative w-full section-hero flex items-center justify-center text-center overflow-hidden">
+            {/* <video className="absolute w-full object-cover z-0 blur-sm" src="/media/films/test.mkv" autoPlay loop muted playsInline aria-label="Video de fondo mostrando producción multimedia">
             Tu navegador no soporta el tag de video.
-            </video>
+            </video> */}
             <div className="relative text-[var(--foreground)] p-4 max-w-4xl mx-auto">
                 <motion.h1
                     className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-[var(--accent)]"

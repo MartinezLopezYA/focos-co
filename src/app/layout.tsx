@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className="h-full">
+        <html lang="en" className="h-full overflow-section">
             <head>
                 <link rel="icon" href="/media/images/Logo.png" type="image/png" />
             </head>
             <body>
-                <div className="min-h-full bg-background text-foreground">
+                <div className="min-h-full bg-background">
                     <Navbar />
                     <main className="container mx-auto">
                         {children}
