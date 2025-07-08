@@ -2,7 +2,7 @@
 
 export default function Contact() {
     return (
-        <section className="flex flex-col h-full items-center justify-center h-screen bg-gray-100">
+        <section className="flex flex-col h-full items-center justify-center bg-gray-100">
         <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
         <p className="text-lg mb-8">We would love to hear from you!</p>
         <form className="w-full max-w-md">

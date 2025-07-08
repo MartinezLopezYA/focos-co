@@ -51,7 +51,7 @@ export default function Navbar() {
             variants={navVariants}
             initial="hidden"
             animate="visible"
-            className="h-72px w-full flex justify-center fixed top-2 z-50 bg-white shadow-md rounded-full">
+            className="h-72px w-full flex justify-center fixed top-2 z-50 bg-background shadow-md rounded-full">
             <div className="container mx-auto flex justify-between gap-2 items-center">
                 {isShowed && (
                     <Link href="/" className="rounded-full h-12 flex items-center">
@@ -60,20 +60,28 @@ export default function Navbar() {
                     </Link>
                 )}
                 <div className="hidden md:flex space-x-2">
-                    <Link href="/" className={`text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4 ${pathname === "/" ? "bg-[var(--accenttransparent)] text-[var(--accent)]" : ""}`}>Inicio</Link>
-                    <Link href="/about" className={`text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4 ${pathname === "/about" ? "bg-[var(--accenttransparent)] text-[var(--accent)]" : ""}`}> Nosotros</Link>
-                    <Link href="/services" className={`text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4 ${pathname === "/services" ? "bg-[var(--accenttransparent)] text-[var(--accent)]" : ""}`}>Servicios</Link>
-                    <Link href="/contact" className={`text-[var(--primary)] hover:text-[var(--primaryhover)] hover:bg-[var(--accenthover)] rounded-full transition py-2 px-4 ${pathname === "/contact" ? "bg-[var(--accenttransparent)] text-[var(--accent)]" : ""}`}>Contacto</Link>
+                    <Link href="/" className={`text-[var(--foreground)] hover:text-[var(--primaryhover)] border-b-2 transition duration-300 pt-2 pb-1 px-4 ${pathname === "/" ? "border-b-[var(--accent)] text-[var(--accent)]"
+                        : "border-b-transparent hover:border-b-[var(--accenthover)]"
+                        }`}>Inicio</Link>
+                    <Link href="/about" className={`text-[var(--foreground)] hover:text-[var(--primaryhover)] border-b-2 transition duration-300 pt-2 pb-1 px-4 ${pathname === "/about" ? "border-b-[var(--accent)] text-[var(--accent)]"
+                        : "border-b-transparent hover:border-b-[var(--accenthover)]"
+                        }`}> Nosotros</Link>
+                    <Link href="/services" className={`text-[var(--foreground)] hover:text-[var(--primaryhover)] border-b-2 transition duration-300 pt-2 pb-1 px-4 ${pathname === "/services" ? "border-b-[var(--accent)] text-[var(--accent)]"
+                        : "border-b-transparent hover:border-b-[var(--accenthover)]"
+                        }`}>Servicios</Link>
+                    <Link href="/contact" className={`text-[var(--foreground)] hover:text-[var(--primaryhover)] border-b-2 transition duration-300 pt-2 pb-1 px-4 ${pathname === "/contact" ? "border-b-[var(--accent)] text-[var(--accent)]"
+                        : "border-b-transparent hover:border-b-[var(--accenthover)]"
+                    }`}>Contacto</Link>
                 </div>
                 <div className="space-x-1 flex items-center">
                     <div className="relative flex items-center group">
-                        <button type="button" aria-label="Buscar" onClick={handleExpand} className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white text-gray-400 transition-colors group-focus-within:text-[var(--accent)] focus:outline-none" tabIndex={-1}>
+                        <button type="button" aria-label="Buscar" onClick={handleExpand} className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background text-foreground transition-colors group-focus-within:text-[var(--accent)] focus:outline-none" tabIndex={-1}>
                             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <circle cx="11" cy="11" r="7" />
                                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
                             </svg>
                         </button>
-                        <input ref={inputRef} type="text" placeholder="Buscar en la página..." className="pl-12 py-2 bg-white transition-all duration-800 w-10 hover:border border-[var(--accent)] focus:w-59 md:focus:w-72 group-hover:w-72 focus:outline-none focus:ring-1 focus:ring-[var(--accent)] focus:shadow-lg text-gray-700 cursor-pointer focus:cursor-text focus:pr-2 rounded-full" onFocus={e => e.currentTarget.select()} onBlur={() => setIsShowed(true)}/>
+                        <input ref={inputRef} type="text" placeholder="Buscar en la página..." className="pl-12 py-2 bg-background transition-all duration-800 w-10 hover:border border-[var(--accent)] focus:w-59 md:focus:w-72 group-hover:w-72 focus:outline-none focus:ring-1 focus:ring-[var(--accent)] focus:shadow-lg text-foreground cursor-pointer focus:cursor-text focus:pr-2 rounded-full" onFocus={e => e.currentTarget.select()} onBlur={() => setIsShowed(true)}/>
                     </div>
                     <div className="space-x-4 flex items-center">
                         <div className="md:hidden">

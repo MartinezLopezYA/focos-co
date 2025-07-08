@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import './globals.css';
 import Navbar from "./components/Navbar";
+import SocialsMedia from "./components/SocialsMedia";
 
 export const metadata: Metadata = {
     title: "FOCOS CO",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <div className="min-h-full bg-background">
                     <Navbar />
+                    <SocialsMedia/>
                     <main className="container mx-auto">
                         {children}
                     </main>
